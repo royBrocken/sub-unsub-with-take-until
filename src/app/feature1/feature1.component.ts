@@ -18,7 +18,12 @@ export class Feature1Component
   }
 
   ngOnInit(): void {
-    this.fakeApi.get().pipe(takeUntil(this.unsubscribe$), finalize(() => console.log('done objs'))
-    ).subscribe();
+    this.fakeApi
+      .get()
+      .pipe(
+        takeUntil(this.unsubscribe$),
+        finalize(() => console.log('observable finalized'))
+      )
+      .subscribe();
   }
 }
